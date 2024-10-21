@@ -13,6 +13,7 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             Instantiate(pool[i], transform);
+            pool[i].SetActive(false);
         }
     }
 
