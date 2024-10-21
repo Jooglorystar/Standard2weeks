@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2130560082}
   - component: {fileID: 2130560083}
+  - component: {fileID: 2130560084}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -259,6 +260,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560e03775f27bfd478f1def6ab4c0876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2130560084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130560081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e16addf31d7a24f9f602e354563ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7496219162000423850, guid: 34e05ee121dc5744f9b0602002f1fea4, type: 3}
+  poolSize: 300
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
