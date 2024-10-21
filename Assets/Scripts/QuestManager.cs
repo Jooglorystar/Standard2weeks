@@ -37,7 +37,7 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
-            Destroy(instance);
+            Destroy(gameObject);
         }
     }
 }
