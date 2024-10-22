@@ -272,8 +272,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e16addf31d7a24f9f602e354563ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7496219162000423850, guid: 34e05ee121dc5744f9b0602002f1fea4, type: 3}
-  poolSize: 300
+  pools:
+  - name: Arrow
+    prefab: {fileID: 7496219162000423850, guid: 34e05ee121dc5744f9b0602002f1fea4, type: 3}
+    poolSize: 300
+  - name: Monster
+    prefab: {fileID: 7496219162000423850, guid: d1cfef1ff58128245802f0e7bb42240b, type: 3}
+    poolSize: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
