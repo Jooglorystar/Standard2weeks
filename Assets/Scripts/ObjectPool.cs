@@ -59,6 +59,9 @@ public class ObjectPool : MonoBehaviour
 
     public void Release(GameObject obj)
     {
-        obj.SetActive(false);
+        if (obj.activeSelf)
+        {
+            obj.SetActive(false);
+        }
     }
 }
