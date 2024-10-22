@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -18,55 +16,41 @@ public class ObjectPool : MonoBehaviour
 
     private Dictionary<string, Pool> poolDict = new Dictionary<string, Pool>();
 
-    void Start()
+    void Awake()
     {
-        /*
-        for (int i = 0; i < poolSize; i++)
-        {
-            GameObject obj = Instantiate(prefab, transform);
-            pools.Add(obj);
-            obj.SetActive(false);
-        }
-        */
         foreach (var pool in pools)
         {
+            poolDict.Add(pool.name, pool);
             for (int i = 0; i < pool.poolSize; i++)
             {
                 GameObject obj = Instantiate(pool.prefab, transform);
                 pool.ObjsInPool.Add(obj);
                 obj.SetActive(false);
-                Debug.Log($"{pool.name} 생성 {i}");
             }
         }
     }
 
     public GameObject Get(string name)
     {
-        /*
-        GameObject obj = null;
-        for (int i = 0; i < poolSize; i++)
-        {
-            if(!pool[i])
-            {
-                pool[i].SetActive(true);
-                obj = pool[i];
-                break;
-            }
-        }
-        */
-        
         if(!poolDict.ContainsKey(name))
         {
             return null;
         }
+
         GameObject obj = null;
+
         for(int i = 0; i< poolDict[name].poolSize; i++)
         {
-            if (!poolDict[name].ObjsInPool[i])
+            if (!poolDict[name].ObjsInPool[i].activeSelf)
             {
                 poolDict[name].ObjsInPool[i].SetActive(true);
                 obj = poolDict[name].ObjsInPool[i];
+                Debug.Log($"Get {name}");
                 break;
+            }
+            else
+            {
+                Debug.Log($"생성할 수 있는 {name} 없음");
             }
         }
         return obj;
