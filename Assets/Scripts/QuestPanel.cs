@@ -29,11 +29,13 @@ public class QuestPanel : MonoBehaviour
                     break;
 
                 case QuestType.Monster:
-                    questText = $"Quset {i + 1} - {QuestManager.Instance.QuestList[i].QuestName} (최소레벨 {QuestManager.Instance.QuestList[i].QuestRequiredLevel})\n를 마리 소탕";
+                    MonsterQuestDataSO SO = (MonsterQuestDataSO)(QuestManager.Instance.QuestList[i]);
+                    questText = $"Quset {i + 1} - {QuestManager.Instance.QuestList[i].QuestName} (최소레벨 {QuestManager.Instance.QuestList[i].QuestRequiredLevel})\n{SO.TargetName}를 {SO.TargetGoalCount}마리 소탕\n";
                     break;
 
                 case QuestType.Encounter:
-                    questText = $"Quset {i + 1} - {QuestManager.Instance.QuestList[i].QuestName} (최소레벨 {QuestManager.Instance.QuestList[i].QuestRequiredLevel})\n와 대화하기";
+                    QuestManager.Instance.QuestList[i] = (EncounterQuestDataSO)QuestManager.Instance.QuestList[i];
+                    questText = $"Quset {i + 1} - {QuestManager.Instance.QuestList[i].QuestName} (최소레벨 {QuestManager.Instance.QuestList[i].QuestRequiredLevel})\n와 대화하기\n";
                     break;
             }
             questTexts += questText;
