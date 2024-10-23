@@ -25,6 +25,8 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public List<QuestDataSO> QuestList;
+
     private void Awake()
     {
         if (instance == null)
