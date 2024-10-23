@@ -16,4 +16,5 @@ MonoBehaviour:
   QuestRequiredLevel: 10
   QuestNPC: 2
   QuestPrerequisites: 
+  questType: 1
   TargetName: "\uD55C\uD6A8\uC2B9 \uB9E4\uB2C8\uC800\uB2D8"

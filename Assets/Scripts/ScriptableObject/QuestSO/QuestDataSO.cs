@@ -9,4 +9,12 @@ public class QuestDataSO : ScriptableObject
     public int QuestRequiredLevel;
     public int QuestNPC;
     public List<int> QuestPrerequisites;
+    public QuestType questType;
+}
+
+public enum QuestType
+{
+    Noncategorized,
+    Encounter,
+    Monster
 }
