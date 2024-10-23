@@ -11,21 +11,11 @@ public class QuestManager : MonoBehaviour
     {
         get
         {
-            return instance;
-        }
-        set
-        {
-            if (instance == null)
+            if(instance == null)
             {
-                Debug.Log("Quest Manager01");
-                instance = FindObjectOfType<QuestManager>();
-                if (instance == null)
-                {
-                    Debug.Log("Quest Manager02");
-                    instance = new QuestManager();
-                    instance.AddComponent<QuestManager>();
-                }
+                instance = new GameObject("QuestManager").AddComponent<QuestManager>();
             }
+            return instance;
         }
     }
 
@@ -33,11 +23,14 @@ public class QuestManager : MonoBehaviour
     {
         if (instance == null)
         {
-            QuestManager.Instance = this;
+            instance = this;
         }
         else
         {
-            Destroy(gameObject);
+            if(instance != this)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
