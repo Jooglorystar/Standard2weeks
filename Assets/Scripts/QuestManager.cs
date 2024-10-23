@@ -13,7 +13,13 @@ public class QuestManager : MonoBehaviour
         {
             if(instance == null)
             {
-                instance = new GameObject("QuestManager").AddComponent<QuestManager>();
+                Debug.Log("Find QuestManager");
+                instance = FindObjectOfType<QuestManager>();
+                if (instance == null)
+                {
+                    Debug.Log("Create QuestManager");
+                    instance = new GameObject("QuestManager").AddComponent<QuestManager>();
+                }
             }
             return instance;
         }
