@@ -2,21 +2,21 @@
 
 public class TestObject : MonoBehaviour
 {
-    [SerializeField] private string name;
+    [SerializeField] private string thisName;
     [SerializeField] private float deactiveTime;
 
-    public string Name { get { return name; } }
+    public string Name { get { return thisName; } }
 
     void Start()
     {
         if (this.gameObject.activeSelf)
         {
-            Invoke("Deactive", 3f);
+            Invoke("Deactive", deactiveTime);
         }
     }
 
     private void Deactive()
     {
-        ObjectPoolManager.Instance.objectPool.Release(this.gameObject);
+        ObjectPoolManager.Instance.objectPool.Release(gameObject);
     }
 }

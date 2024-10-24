@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2729938010575911447}
   - component: {fileID: 8411297928203142256}
-  - component: {fileID: -6173723588616766913}
+  - component: {fileID: 3828265373455049627}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6173723588616766913
+--- !u!114 &3828265373455049627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7496219162000423850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67581b9719f25e14097025f0e00512b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a59c9c5061edfb49b9437fff8926d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisName: Monster
+  deactiveTime: 5
