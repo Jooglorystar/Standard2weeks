@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static ObjectPool;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class ObjectPool : MonoBehaviour
     {
         public string name;
         public GameObject prefab;
-        public int poolSize = 300;
-        public List<GameObject> ObjsInPool = new List<GameObject>();
+        public int poolSize;
+        public Queue<GameObject> ObjsInPool = new Queue<GameObject>();
     }
 
     public List<Pool> pools = new List<Pool>();
@@ -21,10 +22,11 @@ public class ObjectPool : MonoBehaviour
         foreach (var pool in pools)
         {
             poolDict.Add(pool.name, pool);
+
             for (int i = 0; i < pool.poolSize; i++)
             {
                 GameObject obj = Instantiate(pool.prefab, transform);
-                pool.ObjsInPool.Add(obj);
+                pool.ObjsInPool.Enqueue(obj);
                 obj.SetActive(false);
             }
         }
@@ -32,36 +34,37 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject Get(string name)
     {
-        if(!poolDict.ContainsKey(name))
+        if (!poolDict.ContainsKey(name))
         {
             return null;
         }
 
         GameObject obj = null;
 
-        for(int i = 0; i< poolDict[name].poolSize; i++)
+        if (!poolDict[name].ObjsInPool.Peek().activeSelf)
         {
-            if (!poolDict[name].ObjsInPool[i].activeSelf)
-            {
-                poolDict[name].ObjsInPool[i].SetActive(true);
-                obj = poolDict[name].ObjsInPool[i];
-                Debug.Log($"Get {name}");
-                break;
-            }
-            else
-            {
-                Debug.Log($"생성할 수 있는 {name} 없음");
-            }
+            poolDict[name].ObjsInPool.Peek().SetActive(true);
+            obj = poolDict[name].ObjsInPool.Dequeue();
+            Debug.Log($"Get {name}");
+        }
+        else
+        {
+            Debug.Log($"생성할 수 있는 {name} 없음");
         }
         return obj;
-        
+
     }
 
     public void Release(GameObject obj)
     {
+        TestObject to = obj.GetComponent<TestObject>();
+        Pool pool = poolDict[to.Name];
+
         if (obj.activeSelf)
         {
             obj.SetActive(false);
+            pool.ObjsInPool.Enqueue(obj);
+            Debug.Log($"Release {obj.name}");
         }
     }
 }

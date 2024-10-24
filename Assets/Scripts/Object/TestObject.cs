@@ -1,15 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class TestObject : MonoBehaviour
 {
-    [SerializeField]private string name;
-    [SerializeField]private float deactiveTime;
+    [SerializeField] private string name;
+    [SerializeField] private float deactiveTime;
 
     public string Name { get { return name; } }
 
     void Start()
     {
-        if(this.gameObject.activeSelf)
+        if (this.gameObject.activeSelf)
         {
             Invoke("Deactive", 3f);
         }
