@@ -15,7 +15,7 @@ public class ObjectPool : MonoBehaviour
 
     public List<Pool> pools = new List<Pool>();
 
-    private Dictionary<string, Pool> poolDict = new Dictionary<string, Pool>();
+    public Dictionary<string, Pool> poolDict = new Dictionary<string, Pool>();
 
     void Awake()
     {
@@ -39,20 +39,20 @@ public class ObjectPool : MonoBehaviour
             return null;
         }
 
-        GameObject obj = null;
+        if(poolDict[name].ObjsInPool.Count == 0)
+        {
+            Debug.Log($"활성화할 {name} 없음");
+            return null;
+        }
 
-        if (!poolDict[name].ObjsInPool.Peek().activeSelf)
-        {
-            poolDict[name].ObjsInPool.Peek().SetActive(true);
-            obj = poolDict[name].ObjsInPool.Dequeue();
-            Debug.Log($"Get {name}");
-        }
-        else
-        {
-            Debug.Log($"생성할 수 있는 {name} 없음");
-        }
+        GameObject obj;
+
+        poolDict[name].ObjsInPool.Peek().SetActive(true);
+        obj = poolDict[name].ObjsInPool.Dequeue();
+        Debug.Log($"Get {name}");
+
+
         return obj;
-
     }
 
     public void Release(GameObject obj)
