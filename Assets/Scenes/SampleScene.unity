@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 374836618}
   - component: {fileID: 374836617}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f94677399ead21478d759d445614a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 2130560084}
+  pool: {fileID: 1800677252}
 --- !u!4 &374836618
 Transform:
   m_ObjectHideFlags: 0
@@ -511,6 +511,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774878021}
   m_CullTransparentMesh: 1
+--- !u!1 &1800677251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800677253}
+  - component: {fileID: 1800677252}
+  - component: {fileID: 1800677254}
+  m_Layer: 0
+  m_Name: ObjectPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1800677252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800677251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e16addf31d7a24f9f602e354563ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - name: Arrow
+    prefab: {fileID: 7496219162000423850, guid: 34e05ee121dc5744f9b0602002f1fea4, type: 3}
+    poolSize: 300
+    ObjsInPool: []
+  - name: Monster
+    prefab: {fileID: 7496219162000423850, guid: d1cfef1ff58128245802f0e7bb42240b, type: 3}
+    poolSize: 50
+    ObjsInPool: []
+--- !u!4 &1800677253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800677251}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800677254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800677251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500e2910c79644a4fa1150c403f24b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPool: {fileID: 0}
 --- !u!1 &1864643515
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +615,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 600, y: -180}
+  m_SizeDelta: {x: 800, y: -180}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1864643517
 MonoBehaviour:
@@ -610,7 +677,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2130560082}
   - component: {fileID: 2130560083}
-  - component: {fileID: 2130560084}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -648,33 +714,13 @@ MonoBehaviour:
   QuestList:
   - {fileID: 11400000, guid: 5f9f8c66bc1257e4c8763ef37948640e, type: 2}
   - {fileID: 11400000, guid: 82fb69bb32f13bb459e5009ebabaa3a3, type: 2}
---- !u!114 &2130560084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130560081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e16addf31d7a24f9f602e354563ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pools:
-  - name: Arrow
-    prefab: {fileID: 7496219162000423850, guid: 34e05ee121dc5744f9b0602002f1fea4, type: 3}
-    poolSize: 300
-    ObjsInPool: []
-  - name: Monster
-    prefab: {fileID: 7496219162000423850, guid: d1cfef1ff58128245802f0e7bb42240b, type: 3}
-    poolSize: 50
-    ObjsInPool: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 2130560082}
+  - {fileID: 1800677253}
   - {fileID: 374836618}
   - {fileID: 1399603388}
   - {fileID: 182448948}
